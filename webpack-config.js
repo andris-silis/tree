@@ -10,15 +10,9 @@ module.exports = () => {
       //'webpack-hot': 'webpack/hot/only-dev-server',
       app: './src/js/application/bootstrap.js',
       vendors: [
-        'backbone.nativeajax',
         'react',
-        'react-prefixr',
         'lodash',
-        'underscore',
-        'backbone',
-        'exoskeleton',
-        'moment',
-        'jquery'
+        'underscore'
       ]
     },
     output: {
@@ -49,23 +43,13 @@ module.exports = () => {
             'babel-loader?experimental'
           ],
           exclude: /node_modules/
-        },
-        {
-          test: /exoskeleton\.js$/,
-          loader: 'imports?define=>false'
-        },
-        {
-          test: /jquery\.js$/,
-          loader: 'null'
         }
       ],
       noParse: []
     },
     resolve: {
       alias: {
-        underscore: 'lodash',
-        backbone: 'exoskeleton',
-        jquery: path.join(__dirname, 'src', 'js', 'monkey-patches', 'no-jquery')
+        underscore: 'lodash'
       }
     }
   };
