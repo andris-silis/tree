@@ -6,13 +6,22 @@
   "scripts": {
     "build": "./node_modules/.bin/gulp build",
     "build-prod": "./node_modules/.bin/gulp build-prod",
-    "watch": "./node_modules/.bin/gulp watch"
+    "watch": "./node_modules/.bin/gulp watch",
+    "test": "jest"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testFileExtensions": ["es6", "js"],
+    "moduleFileExtensions": ["js", "json", "es6"],
+    "testPathDirs": ["src/js"]
   },
   "author": "Andris Silis",
   "license": "",
   "devDependencies": {
     "babel-core": "^4.0.2",
     "babel-loader": "^4.0.0",
+    "babel-jest": "*",
+    "jest-cli": "*",
     "bower": "^1.3.12",
     "gulp": "^3.8.8",
     "gulp-autoprefixer": "^2.0.0",
@@ -33,20 +42,22 @@
     "gulp-sym": "0.0.14",
     "gulp-uglify": "^1.0.1",
     "gulp-util": "^3.0.1",
-    "gulp-wrap": "^0.3.0",
-    "main-bower-files": "^2.0.0",
-    "react-hot-loader": "^1.1.5",
-    "webpack-dev-server": "^1.7.0",
     "gulp-webpack": "^1.1.0",
-    "jsx-loader": "^0.12.2",
+    "gulp-wrap": "^0.3.0",
     "imports-loader": "^0.6.3",
+    "jest-cli": "^0.4.0",
+    "jsx-loader": "^0.12.2",
+    "main-bower-files": "^2.0.0",
     "null-loader": "^0.1.0",
-    "webpack": "^1.5.3"
+    "react-hot-loader": "^1.1.5",
+    "webpack": "^1.5.3",
+    "webpack-dev-server": "^1.7.0"
   },
   "dependencies": {
     "babel": "^4.7.3",
     "classnames": "^1.1.4",
     "immutable": "^3.6.2",
+    "karma": "^0.12.31",
     "lodash": "^3.5.0",
     "react": "^0.13.0-rc1",
     "react-tools": "^0.13.0-rc1",
