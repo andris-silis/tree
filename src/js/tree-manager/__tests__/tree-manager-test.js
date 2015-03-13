@@ -9,15 +9,31 @@ jest.autoMockOn();
 
 describe('Tree Manager', () => {
   it("deletes child from parent's children Map", () => {
-    var treeCursor = Cursor.from(tree, newTree => {
-      tree = newTree;
+    var treeData = tree;
+    var treeCursor = Cursor.from(treeData, newTree => {
+      treeData = newTree;
     });
     var childNode2Cursor = treeCursor.getIn(['children', 1]);
 
     deleteChildNode(treeCursor, childNode2Cursor);
 
     expect(
-      tree.equals(treeAfterChildDelete)
+      treeData.equals(treeAfterChildDelete)
+    ).toBe(true);
+  });
+
+
+  it("doesn't do anything when trying to delete non-existing child", () => {
+    var treeData = tree;
+    var treeCursor = Cursor.from(treeData, newTree => {
+      treeData = newTree;
+    });
+    var childNode21Cursor = treeCursor.getIn(['children', 1, 'children', 0]);
+
+    deleteChildNode(treeCursor, childNode21Cursor);
+
+    expect(
+      treeData.equals(tree)
     ).toBe(true);
   });
 });
