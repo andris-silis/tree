@@ -5,7 +5,34 @@ import ShouldComponentUpdateMixin from '../mixins/ShouldComponentUpdateMixin';
 import { deleteChildNode, addChildNode } from '../tree-manager/treeManager';
 
 var TreeNodeView = React.createClass({
-  mixins: [ShouldComponentUpdateMixin],
+  mixins: [ShouldComponentUpdateMixin, React.addons.LinkedStateMixin],
+
+
+  getInitialState() {
+    return {
+      editing: false,
+      text: ''
+    };
+  },
+
+
+  componentWillMount() {
+    this.setState({
+      text: this.props.node.get('text')
+    });
+  },
+
+
+  componentWillReceiveProps(nextProps) {
+    // Don't overwrite text state if it is currently edited
+    if (this.state.editing) {
+      return;
+    }
+
+    this.setState({
+      text: nextProps.node.get('text')
+    })
+  },
 
 
   onDeleteClick() {
@@ -15,6 +42,22 @@ var TreeNodeView = React.createClass({
 
   onAddChildClick() {
     addChildNode(this.props.node, { text: 'New child' })
+  },
+
+
+  onEditClick() {
+    this.setState({
+      editing: true
+    });
+  },
+
+
+  onSaveClick() {
+    this.setState({
+      editing: false
+    });
+
+    this.props.node.set('text', this.state.text);
   },
 
 
@@ -40,6 +83,19 @@ var TreeNodeView = React.createClass({
   },
 
 
+  renderEditButton() {
+    if (!this.props.parentNode || this.state.editing) {
+      return;
+    }
+
+    return (
+      <button onClick={this.onEditClick}>
+        Edit
+      </button>
+    );
+  },
+
+
   renderChildNode(childNode, index) {
     return (
       <TreeNodeView
@@ -51,16 +107,64 @@ var TreeNodeView = React.createClass({
   },
 
 
+  renderTextEl() {
+    if (this.state.editing) {
+      return;
+    }
+
+    return (
+      <span className='text'>
+        {this.state.text}
+      </span>
+    );
+  },
+
+
+  renderSaveButton() {
+    // Show save button only if editing and text is changed
+    if (
+      !this.state.editing
+        ||
+      this.state.text === this.props.node.get('text')
+    ) {
+      return;
+    }
+
+    return (
+      <button
+        onClick={this.onSaveClick}
+      >
+        Save
+      </button>
+    )
+  },
+
+
+  renderEditTextEl() {
+    if (!this.state.editing) {
+      return;
+    }
+
+    return (
+      <span className='edit'>
+        <input
+          type='text'
+          valueLink={this.linkState('text')}
+        />
+        {this.renderSaveButton()}
+      </span>
+    );
+  },
+
+
   render() {
     return (
       <li>
         {this.renderDeleteButton()}
-
         {this.renderAddChildButton()}
-
-        <span className='text'>
-          {this.props.node.get('text')}
-        </span>
+        {this.renderEditButton()}
+        {this.renderTextEl()}
+        {this.renderEditTextEl()}
 
         <ul>
           {this.props.node.get('children').map(this.renderChildNode)}
