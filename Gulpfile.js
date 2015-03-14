@@ -1,2 +1,2 @@
 require('babel/register');
-require('./gulp-config');
+module.exports = require('./gulp-config');
