@@ -38,7 +38,7 @@ describe('Tree Manager', () => {
   });
 
 
-  it('adds child to parents children List', () => {
+  it("adds child to parent's children List", () => {
     var treeData = tree;
     var treeCursor = Cursor.from(treeData, newTree => {
       treeData = newTree;
