@@ -1,6 +1,10 @@
 import React from 'react';
 
+import ShouldComponentUpdateMixin from '../mixins/ShouldComponentUpdateMixin';
+
 var TreeNodeView = React.createClass({
+  mixins: [ShouldComponentUpdateMixin],
+
   renderChildNode(childNode, index) {
     return (
       <TreeNodeView
