@@ -56,7 +56,7 @@
     "classnames": "^1.1.4",
     "immutable": "^3.6.2",
     "lodash": "^3.5.0",
-    "react": "^0.13.0-rc1",
-    "react-tools": "^0.13.0-rc1"
+    "react": "^0.13.0",
+    "react-tools": "^0.13.0"
   }
 }
