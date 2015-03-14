@@ -1,11 +1,9 @@
-import immstruct from 'immstruct';
-
 import renderApp from './renderApp';
+import initAppState from './initAppState';
 
 
 var bootstrap = () => {
-  // Application state structure with history for undo
-  var state = immstruct.withHistory('state');
+  var state = initAppState();
 
   // Re-render app when data state changes
   state.on('swap', () => {
