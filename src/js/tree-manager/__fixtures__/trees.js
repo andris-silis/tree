@@ -1,10 +1,6 @@
-jest.autoMockOff();
-
 import { List, Map } from 'immutable';
 
 import TreeNodeRecord from '../../tree/TreeNodeRecord';
-
-jest.autoMockOn();
 
 
 export var tree = TreeNodeRecord({

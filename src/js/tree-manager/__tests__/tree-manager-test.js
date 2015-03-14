@@ -1,10 +1,6 @@
-jest.autoMockOff();
-
 import Cursor from 'immutable/contrib/cursor';
 import { deleteChildNode, addChildNode } from '../treeManager';
 import { tree, treeAfterChildDelete, treeAfterChildAdd } from '../__fixtures__/trees';
-
-jest.autoMockOn();
 
 
 describe('Tree Manager', () => {
