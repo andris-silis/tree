@@ -8,7 +8,7 @@ jest.autoMockOn();
 
 
 describe('Tree Manager', () => {
-  it("deletes child from parent's children Map", () => {
+  it("deletes child from parent's children List", () => {
     var treeData = tree;
     var treeCursor = Cursor.from(treeData, newTree => {
       treeData = newTree;
