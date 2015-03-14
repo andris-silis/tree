@@ -9,9 +9,11 @@ export default React.createClass({
 
   render() {
     return (
-      <TreeNodeView
-        node={this.props.tree}
-      />
+      <ul className='tree'>
+        <TreeNodeView
+          node={this.props.tree}
+        />
+      </ul>
     );
   }
 });
