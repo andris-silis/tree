@@ -2,7 +2,7 @@ import React from 'react';
 import ApplicationLayoutView from './ApplicationLayoutView.jsx';
 
 
-export default function () {
+export default function (state) {
   React.render(
     <ApplicationLayoutView>
     </ApplicationLayoutView>,
