@@ -3,35 +3,16 @@ import React from 'react';
 import ShouldComponentUpdateMixin from '../mixins/ShouldComponentUpdateMixin';
 
 import { deleteChildNode, addChildNode } from '../tree-manager/treeManager';
+import TreeNodeEditView from './TreeNodeEditView.jsx';
+
 
 var TreeNodeView = React.createClass({
-  mixins: [ShouldComponentUpdateMixin, React.addons.LinkedStateMixin],
-
+  mixins: [ShouldComponentUpdateMixin],
 
   getInitialState() {
     return {
-      editing: false,
-      text: ''
+      editing: false
     };
-  },
-
-
-  componentWillMount() {
-    this.setState({
-      text: this.props.node.get('text')
-    });
-  },
-
-
-  componentWillReceiveProps(nextProps) {
-    // Don't overwrite text state if it is currently edited
-    if (this.state.editing) {
-      return;
-    }
-
-    this.setState({
-      text: nextProps.node.get('text')
-    })
   },
 
 
@@ -52,12 +33,10 @@ var TreeNodeView = React.createClass({
   },
 
 
-  onSaveClick() {
+  onEdited() {
     this.setState({
       editing: false
     });
-
-    this.props.node.set('text', this.state.text);
   },
 
 
@@ -114,29 +93,9 @@ var TreeNodeView = React.createClass({
 
     return (
       <span className='text'>
-        {this.state.text}
+        {this.props.node.get('text')}
       </span>
     );
-  },
-
-
-  renderSaveButton() {
-    // Show save button only if editing and text is changed
-    if (
-      !this.state.editing
-        ||
-      this.state.text === this.props.node.get('text')
-    ) {
-      return;
-    }
-
-    return (
-      <button
-        onClick={this.onSaveClick}
-      >
-        Save
-      </button>
-    )
   },
 
 
@@ -146,13 +105,10 @@ var TreeNodeView = React.createClass({
     }
 
     return (
-      <span className='edit'>
-        <input
-          type='text'
-          valueLink={this.linkState('text')}
-        />
-        {this.renderSaveButton()}
-      </span>
+      <TreeNodeEditView
+        node={this.props.node}
+        onEdited={this.onEdited}
+      />
     );
   },
 
