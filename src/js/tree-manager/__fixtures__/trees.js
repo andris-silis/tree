@@ -2,21 +2,21 @@ jest.autoMockOff();
 
 import { List, Map } from 'immutable';
 
-import TreeNode from '../../tree/TreeNode';
+import TreeNodeRecord from '../../tree/TreeNodeRecord';
 
 jest.autoMockOn();
 
 
-export var tree = TreeNode({
+export var tree = TreeNodeRecord({
   text: 'Root',
   children: List([
-    TreeNode({
+    TreeNodeRecord({
       text: 'child-1',
     }),
-    TreeNode({
+    TreeNodeRecord({
       text: 'child-2',
       children: List([
-        TreeNode({
+        TreeNodeRecord({
           text: 'child-2-1',
         })
       ])
@@ -25,31 +25,31 @@ export var tree = TreeNode({
 });
 
 
-export var treeAfterChildDelete = TreeNode({
+export var treeAfterChildDelete = TreeNodeRecord({
   text: 'Root',
   children: List([
-    TreeNode({
+    TreeNodeRecord({
       text: 'child-1',
     })
   ])
 });
 
 
-export var treeAfterChildAdd = TreeNode({
+export var treeAfterChildAdd = TreeNodeRecord({
   text: 'Root',
   children: List([
-    TreeNode({
+    TreeNodeRecord({
       text: 'child-1',
     }),
-    TreeNode({
+    TreeNodeRecord({
       text: 'child-2',
       children: List([
-        TreeNode({
+        TreeNodeRecord({
           text: 'child-2-1',
         })
       ])
     }),
-    TreeNode({
+    TreeNodeRecord({
       text: 'child-3',
     }),
   ])

@@ -1,4 +1,4 @@
-import TreeNode from '../tree/TreeNode';
+import TreeNodeRecord from '../tree/TreeNodeRecord';
 
 export default {
 
@@ -17,7 +17,7 @@ export default {
   addChildNode(parentNodeCursor, data) {
     parentNodeCursor.get('children').update(children => {
       return children.push(
-        new TreeNode(data)
+        new TreeNodeRecord(data)
       );
     });
   },
