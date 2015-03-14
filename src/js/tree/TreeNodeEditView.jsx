@@ -50,6 +50,28 @@ export default React.createClass({
   },
 
 
+  onCancelClick() {
+    this.setState({
+      editing: false
+    });
+
+    if (_.isFunction(this.props.onEdited)){
+      this.props.onEdited();
+    }
+  },
+
+
+  renderCancelButton() {
+    return (
+      <button
+        onClick={this.onCancelClick}
+      >
+        Cancel
+      </button>
+    );
+  },
+
+
   renderSaveButton() {
     // Show save button only when text is changed
     if (
@@ -75,6 +97,7 @@ export default React.createClass({
           type='text'
           valueLink={this.linkState('text')}
         />
+        {this.renderCancelButton()}
         {this.renderSaveButton()}
       </span>
 
