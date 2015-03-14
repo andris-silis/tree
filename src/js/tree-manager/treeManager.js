@@ -1,3 +1,5 @@
+import TreeNode from '../tree/TreeNode';
+
 export default {
 
   deleteChildNode(parentNodeCursor, childNodeCursor) {
@@ -11,4 +13,12 @@ export default {
     });
   },
 
+
+  addChildNode(parentNodeCursor, data) {
+    parentNodeCursor.get('children').update(children => {
+      return children.push(
+        new TreeNode(data)
+      );
+    });
+  },
 };

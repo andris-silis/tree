@@ -1,8 +1,8 @@
 jest.autoMockOff();
 
 import Cursor from 'immutable/contrib/cursor';
-import { deleteChildNode } from '../treeManager';
-import { tree, treeAfterChildDelete } from '../__fixtures__/treeChildDelete';
+import { deleteChildNode, addChildNode } from '../treeManager';
+import { tree, treeAfterChildDelete, treeAfterChildAdd } from '../__fixtures__/trees';
 
 jest.autoMockOn();
 
@@ -34,6 +34,20 @@ describe('Tree Manager', () => {
 
     expect(
       treeData.equals(tree)
+    ).toBe(true);
+  });
+
+
+  it('adds child to parents children List', () => {
+    var treeData = tree;
+    var treeCursor = Cursor.from(treeData, newTree => {
+      treeData = newTree;
+    });
+
+    addChildNode(treeCursor, { text: 'child-3' });
+
+    expect(
+      treeData.equals(treeAfterChildAdd)
     ).toBe(true);
   });
 });
