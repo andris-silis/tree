@@ -3,7 +3,12 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build": "./node_modules/.bin/gulp build",
+    "build-prod": "./node_modules/.bin/gulp build-prod",
+    "watch": "./node_modules/.bin/gulp watch",
+    "test": "./node_modules/karma/bin/karma start --single-run"
+  },
   "author": "Andris Silis",
   "license": "",
   "devDependencies": {

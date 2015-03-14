@@ -1,10 +1,4 @@
 
-## Requirements:
-* Git
-* Bower
-* NPM
-* Gulp
-
 ## Installation:
  Clone this repository
 
@@ -12,7 +6,7 @@
 
  `npm install`
 
- `bower install`
+ `npm build`
 
 
 ## Run:
@@ -31,13 +25,12 @@ CSS build config is inside gulp-config.js, CSS is
 ## Build the JS code
   `npm build`
 
+
 ### For development - starts a LiveReload server and rebuilds files on change:
+  `npm run-script build && npm run-script watch`
 
-  `npm build && npm watch`
-
-### Production build - uglifies the end result:
-
-  `npm build-prod`
+### Production build - minifies the end result:
+  `npm run-script build-prod`
 
   Built CSS and JS is placed in `www/compiled` directory.
 
