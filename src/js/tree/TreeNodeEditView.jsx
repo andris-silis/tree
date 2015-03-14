@@ -30,13 +30,20 @@ export default React.createClass({
   },
 
 
+  componentDidMount() {
+    var textInputEl = this.getDOMNode().querySelector('input[type=text]');
+    textInputEl.focus();
+    textInputEl.select();
+  },
+
+
   onSaveClick() {
     this.setState({
       editing: false
     });
 
     this.props.node.set('text', this.state.text);
-    
+
     if (_.isFunction(this.props.onEdited)){
       this.props.onEdited();
     }
