@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "postinstall": "rm -rf node_modules/gulp/node_modules/vinyl-fs/node_modules/glob-watcher/node_modules/gaze/node_modules/globule/node_modules/lodash ; cd node_modules/material-ui/ ; npm run-script prepublish",
     "build": "./node_modules/.bin/gulp build",
@@ -37,6 +38,8 @@
     "gulp-util": "^3.0.1",
     "gulp-webpack": "^1.1.0",
     "gulp-wrap": "^0.3.0",
+    "gulp-less": "^3.0.1",
+    "gulp-sourcemaps": "^1.5.0",
     "imports-loader": "^0.6.3",
     "jasmine-core": "^2.2.0",
     "jsx-loader": "^0.12.2",
@@ -53,8 +56,6 @@
   "dependencies": {
     "babel": "^4.7.3",
     "classnames": "^1.1.4",
-    "gulp-less": "^3.0.1",
-    "gulp-sourcemaps": "^1.5.0",
     "immstruct": "^1.4.0",
     "immutable": "^3.6.2",
     "lodash": "^3.5.0",
