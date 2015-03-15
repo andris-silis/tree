@@ -1,12 +1,16 @@
 import React from 'react';
 import _ from 'lodash';
+import classNames from 'classnames';
+
 
 export default React.createClass({
   mixins: [React.addons.LinkedStateMixin],
 
   getInitialState() {
     return {
-      text: ''
+      text: '',
+      editing: false,
+      focused: false
     };
   },
 
@@ -30,38 +34,54 @@ export default React.createClass({
   },
 
 
-  componentDidMount() {
-    var textInputEl = this.getDOMNode().querySelector('input[type=text]');
-    textInputEl.focus();
-    textInputEl.select();
-  },
-
-
   onSaveClick() {
     this.setState({
       editing: false
     });
 
     this.props.node.set('text', this.state.text);
-
-    if (_.isFunction(this.props.onEdited)){
-      this.props.onEdited();
-    }
   },
 
 
   onCancelClick() {
     this.setState({
-      editing: false
+      editing: false,
+      text: this.props.node.get('text')
     });
+  },
 
-    if (_.isFunction(this.props.onEdited)){
-      this.props.onEdited();
-    }
+
+  onFocus() {
+    this.setState(
+      {
+        focused: true,
+        editing: true
+      },
+      () => {
+        _.delay(
+          () => {
+            var textInputEl = this.getDOMNode().querySelector('input[type=text]');
+            textInputEl.select();
+          },
+          100
+        );
+      }
+    );
+  },
+
+
+  onBlur() {
+    this.setState({
+      focused: false
+    });
   },
 
 
   renderCancelButton() {
+    if (!this.state.editing) {
+      return;
+    }
+
     return (
       <button
         onClick={this.onCancelClick}
@@ -86,21 +106,37 @@ export default React.createClass({
       >
         Save
       </button>
-    )
+    );
   },
 
 
   render() {
+    var classes = classNames(
+      'mui-text-field',
+      'mui-has-value',
+      { 'mui-is-focused': this.state.focused }
+    );
+
     return (
-      <span className='edit'>
-        <input
-          type='text'
-          valueLink={this.linkState('text')}
-        />
+      <span
+        className='edit'
+      >
+        <div className={classes}>
+          <input
+            onFocus={this.onFocus}
+            onBlur={this.onBlur}
+            className='mui-text-field-input'
+            type='text'
+            valueLink={this.linkState('text')}
+            disabled={this.props.node.get('id') === 'root'}
+          />
+          <hr className='mui-text-field-underline' />
+          <hr className='mui-text-field-focus-underline' />
+        </div>
+
         {this.renderCancelButton()}
         {this.renderSaveButton()}
       </span>
-
     );
   }
 });

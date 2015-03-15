@@ -10,13 +10,6 @@ import TreeNodeEditView from './TreeNodeEditView.jsx';
 var TreeNodeView = React.createClass({
   mixins: [ShouldComponentUpdateMixin],
 
-  getInitialState() {
-    return {
-      editing: false
-    };
-  },
-
-
   onDeleteClick() {
     deleteChildNode(this.props.parentNode, this.props.node);
   },
@@ -24,20 +17,6 @@ var TreeNodeView = React.createClass({
 
   onAddChildClick() {
     addChildNode(this.props.node, { text: 'New child' })
-  },
-
-
-  onEditClick() {
-    this.setState({
-      editing: true
-    });
-  },
-
-
-  onEdited() {
-    this.setState({
-      editing: false
-    });
   },
 
 
@@ -69,22 +48,6 @@ var TreeNodeView = React.createClass({
   },
 
 
-  renderEditButton() {
-    if (!this.props.parentNode || this.state.editing) {
-      return;
-    }
-
-    return (
-      <IconButton
-        tooltip='Edit'
-        onClick={this.onEditClick}
-      >
-        <img src='icons/ic_edit_24px.svg' />
-      </IconButton>
-    );
-  },
-
-
   renderChildNode(childNode, index) {
     return (
       <TreeNodeView
@@ -96,28 +59,10 @@ var TreeNodeView = React.createClass({
   },
 
 
-  renderTextEl() {
-    if (this.state.editing) {
-      return;
-    }
-
-    return (
-      <span className='text'>
-        {this.props.node.get('text')}
-      </span>
-    );
-  },
-
-
   renderEditTextEl() {
-    if (!this.state.editing) {
-      return;
-    }
-
     return (
       <TreeNodeEditView
         node={this.props.node}
-        onEdited={this.onEdited}
       />
     );
   },
@@ -128,8 +73,6 @@ var TreeNodeView = React.createClass({
       <li>
         {this.renderDeleteButton()}
         {this.renderAddChildButton()}
-        {this.renderEditButton()}
-        {this.renderTextEl()}
         {this.renderEditTextEl()}
 
         <ul>
