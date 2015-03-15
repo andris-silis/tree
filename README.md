@@ -7,8 +7,6 @@
 
  `npm install`
 
- `bower install`
-
  `npm build`
 
 

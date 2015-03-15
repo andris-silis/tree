@@ -12,15 +12,17 @@ import autoprefixer from 'gulp-autoprefixer';
 import webpack from 'gulp-webpack';
 import webpackConfig from './webpack-config';
 
+import less from 'gulp-less';
+import sourcemaps from 'gulp-sourcemaps';
 
-var cssSrc = ['src/**/*.css'];
+
+var lessSrc = ['src/less/main.less'];
 
 var outputDestination = './www/compiled';
 var jsOutputDestination = `${outputDestination}/js`;
 var cssOutputDestination = `${outputDestination}/css`;
 
 var cssFile = 'main.css';
-var vendorsCSSFile = 'vendors.css';
 
 
 gulp.task('concat-js', () => {
@@ -32,26 +34,14 @@ gulp.task('concat-js', () => {
 });
 
 
-gulp.task('concat-vendor-css', () => {
-  gulp
-    .src(
-    mainBowerFiles({
-      checkExistence: true
-    })
-  )
-    .pipe(filter(['*.css']))
-    .pipe(autoprefixer())
+gulp.task('less', function() {
+  return gulp
+    .src(lessSrc)
+    .pipe(sourcemaps.init())
+    .pipe(less())
     .on('error', gutil.log)
-    .pipe(concat(vendorsCSSFile))
-    .pipe(gulp.dest(cssOutputDestination));
-});
-
-
-gulp.task('concat-css', () => {
-  gulp
-    .src(cssSrc)
     .pipe(autoprefixer())
-    .on('error', gutil.log)
+    .pipe(sourcemaps.write())
     .pipe(concat(cssFile))
     .pipe(gulp.dest(cssOutputDestination));
 });
@@ -70,7 +60,7 @@ gulp.task('minify-public', ['minify-public-css']);
 gulp.task(
   'build',
   [
-    'concat-js', 'concat-css', 'concat-vendor-css'
+    'concat-js', 'less'
   ],
   () => {
     if (process.env.NODE_ENV === 'production' && !process.env.NO_MINIFY) {
@@ -102,7 +92,7 @@ gulp.task('watch', () => {
     .pipe(gulp.dest(jsOutputDestination));
 
   gulp
-    .watch(cssSrc, ['concat-css'])
+    .watch('src/less/**/*.less', ['less'])
     .on('error', gutil.log);
 
   gulp
