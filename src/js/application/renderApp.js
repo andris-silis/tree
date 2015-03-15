@@ -11,6 +11,7 @@ export default function (state) {
   React.render(
     <ApplicationLayoutView>
       <TreeToolbarView
+        appState={state}
         tree={rootNodeCursor}
       />
       <TreeView
