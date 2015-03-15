@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "rm -rf node_modules/gulp/node_modules/vinyl-fs/node_modules/glob-watcher/node_modules/gaze/node_modules/globule/node_modules/lodash ; cd node_modules/material-ui/ ; npm run-script prepublish",
     "build": "./node_modules/.bin/gulp build",
     "build-prod": "./node_modules/.bin/gulp build-prod",
     "watch": "./node_modules/.bin/gulp watch",
@@ -43,11 +44,9 @@
     "karma-babel-preprocessor": "^4.0.1",
     "karma-chrome-launcher": "^0.1.7",
     "karma-jasmine": "^0.3.5",
-    "karma-phantomjs-launcher": "^0.1.4",
     "karma-webpack": "^1.5.0",
     "main-bower-files": "^2.0.0",
     "null-loader": "^0.1.0",
-    "react-hot-loader": "^1.1.5",
     "webpack": "^1.5.3",
     "webpack-dev-server": "^1.7.0"
   },
@@ -57,8 +56,10 @@
     "immstruct": "^1.4.0",
     "immutable": "^3.6.2",
     "lodash": "^3.5.0",
-    "omniscient": "^3.1.0",
+    "material-ui": "git+https://github.com/andris-silis/material-ui.git",
+    "omniscient": "git+https://github.com/andris-silis/omniscient.git",
     "react": "^0.13.0",
+    "react-tap-event-plugin": "git+https://github.com/andris-silis/react-tap-event-plugin.git",
     "react-tools": "^0.13.0"
   }
 }
