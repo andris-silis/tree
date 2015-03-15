@@ -1,25 +1,35 @@
 import React from 'react';
 
-import { Toolbar } from 'material-ui';
+import { Toolbar, ToolbarGroup } from 'material-ui';
 
-import TreeLoadSaveView from './TreeLoadSaveView.jsx';
-import TreeUndoRedoView from './TreeUndoRedoView.jsx';
+import TreeLoadView from './TreeLoadView.jsx';
+import TreeSaveView from './TreeSaveView.jsx';
+import TreeUndoView from './TreeUndoView.jsx';
+import TreeRedoView from './TreeRedoView.jsx';
 
 
 export default React.createClass({
 
   render() {
     return (
-      <Toolbar>
-        <TreeLoadSaveView
-          tree={this.props.tree}
-        />
+      <Toolbar className='toolbar'>
+        <ToolbarGroup>
+          <TreeLoadView
+            tree={this.props.tree}
+          />
+          <TreeSaveView
+            tree={this.props.tree}
+          />
 
-        <span className='mui-toolbar-separator'>&nbsp;</span>
+          <span className="mui-toolbar-separator">&nbsp;</span>
 
-        <TreeUndoRedoView
-          appState={this.props.appState}
-        />
+          <TreeUndoView
+            appState={this.props.appState}
+          />
+          <TreeRedoView
+            appState={this.props.appState}
+          />
+        </ToolbarGroup>
       </Toolbar>
     );
   }
