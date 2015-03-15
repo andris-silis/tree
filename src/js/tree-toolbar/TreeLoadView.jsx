@@ -1,4 +1,5 @@
 import React from 'react';
+import { RaisedButton } from 'material-ui';
 import _ from 'lodash';
 import { fromJS as immutableFromJS } from 'immutable';
 
@@ -50,12 +51,11 @@ export default React.createClass({
 
   render() {
     return (
-      <button
+      <RaisedButton
+        label='Load'
         onClick={this.onLoadClick}
         disabled={!this.hasSavedData()}
-      >
-        Load
-      </button>
+      />
     );
   }
 });

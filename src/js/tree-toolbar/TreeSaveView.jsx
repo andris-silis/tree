@@ -1,4 +1,5 @@
 import React from 'react';
+import { RaisedButton } from 'material-ui';
 
 
 export default React.createClass({
@@ -14,12 +15,11 @@ export default React.createClass({
 
   render() {
     return (
-      <button
+      <RaisedButton
+        label='Save'
         onClick={this.onSaveClick}
         disabled={this.props.disabled}
-      >
-        Save
-      </button>
+      />
     );
   }
 });

@@ -1,4 +1,6 @@
 import React from 'react';
+import { RaisedButton } from 'material-ui';
+
 
 export default React.createClass({
 
@@ -10,11 +12,10 @@ export default React.createClass({
 
   render() {
     return (
-      <button
+      <RaisedButton
+        label='Undo'
         onClick={this.onUndoClick}
-      >
-        Undo
-      </button>
+      />
     );
   }
 });
