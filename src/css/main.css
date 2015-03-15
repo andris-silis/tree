@@ -1,0 +1,8 @@
+
+body {
+  padding: 20px;
+}
+
+button[disabled=disabled], button:disabled {
+  background: gray;
+}
