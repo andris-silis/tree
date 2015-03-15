@@ -7,7 +7,7 @@
 
  `npm install`
 
- `npm build`
+ `npm run-script build`
 
 
 ## Run:
@@ -18,9 +18,6 @@
 JS source code is inside directory `src/` with an entry point `src/js/application/bootstrap.js`
 
 JS code is built using Webpack as CommonJS builder and Gulp as a command runner. Code is separated into vendors and app bundles for faster rebuild when developing.
-
-CSS build config is inside gulp-config.js, CSS is
-  automatically vendor-prefixed and CSS files merged into one.
 
 
 ## Build the JS code
