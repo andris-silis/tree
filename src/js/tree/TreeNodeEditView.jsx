@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import classNames from 'classnames';
+import { IconButton } from 'material-ui';
 
 
 export default React.createClass({
@@ -78,34 +79,34 @@ export default React.createClass({
 
 
   renderCancelButton() {
-    if (!this.state.editing) {
+    if (this.state.text === this.props.node.get('text')) {
       return;
     }
 
     return (
-      <button
+      <IconButton
+        tooltip='Cancel'
         onClick={this.onCancelClick}
       >
-        Cancel
-      </button>
+        <img src='icons/ic_cancel_24px.svg' />
+      </IconButton>
     );
   },
 
 
   renderSaveButton() {
     // Show save button only when text is changed
-    if (
-      this.state.text === this.props.node.get('text')
-    ) {
+    if (this.state.text === this.props.node.get('text')) {
       return;
     }
 
     return (
-      <button
+      <IconButton
+        tooltip='Save'
         onClick={this.onSaveClick}
       >
-        Save
-      </button>
+        <img src='icons/ic_save_24px.svg' />
+      </IconButton>
     );
   },
 
@@ -119,7 +120,7 @@ export default React.createClass({
 
     return (
       <span
-        className='edit'
+        className='text'
       >
         <div className={classes}>
           <input
