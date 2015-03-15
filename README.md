@@ -4,7 +4,10 @@
 
  Change into repository root directory
 
+
  `npm install`
+
+ `bower install`
 
  `npm build`
 
