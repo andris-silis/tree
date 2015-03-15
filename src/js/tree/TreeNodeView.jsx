@@ -16,7 +16,13 @@ var TreeNodeView = React.createClass({
 
 
   onAddChildClick() {
-    addChildNode(this.props.node, { text: 'New child' })
+    addChildNode(
+      this.props.node,
+      {
+        id: Math.random().toString(36).substring(7),
+        text: 'New child'
+      }
+    );
   },
 
 
@@ -48,10 +54,10 @@ var TreeNodeView = React.createClass({
   },
 
 
-  renderChildNode(childNode, index) {
+  renderChildNode(childNode) {
     return (
       <TreeNodeView
-        key={index}
+        key={childNode.get('id')}
         node={childNode}
         parentNode={this.props.node}
       />
@@ -75,9 +81,12 @@ var TreeNodeView = React.createClass({
         {this.renderAddChildButton()}
         {this.renderEditTextEl()}
 
-        <ul>
+        <React.addons.CSSTransitionGroup
+          transitionName='fade'
+          component='ul'
+        >
           {this.props.node.get('children').map(this.renderChildNode)}
-        </ul>
+        </React.addons.CSSTransitionGroup>
       </li>
     );
   }
