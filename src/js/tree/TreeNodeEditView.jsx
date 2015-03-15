@@ -87,6 +87,7 @@ export default React.createClass({
       <IconButton
         tooltip='Cancel'
         onClick={this.onCancelClick}
+        key='cb'
       >
         <img src='icons/ic_cancel_24px.svg' />
       </IconButton>
@@ -104,6 +105,7 @@ export default React.createClass({
       <IconButton
         tooltip='Save'
         onClick={this.onSaveClick}
+        key='sb'
       >
         <img src='icons/ic_save_24px.svg' />
       </IconButton>
@@ -135,8 +137,12 @@ export default React.createClass({
           <hr className='mui-text-field-focus-underline' />
         </div>
 
-        {this.renderCancelButton()}
-        {this.renderSaveButton()}
+        <React.addons.CSSTransitionGroup
+          transitionName='fade'
+        >
+          {this.renderCancelButton()}
+          {this.renderSaveButton()}
+        </React.addons.CSSTransitionGroup>
       </span>
     );
   }
