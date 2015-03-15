@@ -1,0 +1,9 @@
+
+.toolbar > div {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.toolbar button {
+  margin-right: 4px;
+}

@@ -7,7 +7,7 @@ export default React.createClass({
 
   render() {
     return (
-      <div>
+      <div className='toolbar'>
         <TreeLoadSaveView
           tree={this.props.tree}
         />
