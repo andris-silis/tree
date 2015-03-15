@@ -32,7 +32,7 @@ export default React.createClass({
 
 
   onLoadClick() {
-    var localStorageData = this.loadFromLocalStorage();
+    var localStorageData = this.loadSavedData();
     if (!localStorageData) {
       alert('No tree data in localStorage');
       return;
