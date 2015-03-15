@@ -10,7 +10,10 @@ export default React.createClass({
 
   render() {
     return (
-      <Paper zDepth={1}>
+      <Paper
+        zDepth={1}
+        className='tree-container'
+      >
         <ul className='tree'>
           <TreeNodeView
             node={this.props.tree}
