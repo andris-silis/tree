@@ -3,8 +3,36 @@ import { fromJS as immutableFromJS } from 'immutable';
 
 
 export default React.createClass({
+  getInitialState() {
+    return {
+      hasDataToLoad: false
+    };
+  },
+
+
+  componentWillMount() {
+    if (!this.hasSavedData()) {
+      return;
+    }
+
+    this.setState({
+      hasDataToLoad: true
+    })
+  },
+
+
+  hasSavedData() {
+    return !!this.loadSavedData();
+  },
+
+
+  loadSavedData() {
+    return localStorage.getItem('treeData');
+  },
+
+
   onLoadClick() {
-    var localStorageData = localStorage.getItem('treeData');
+    var localStorageData = this.loadFromLocalStorage();
     if (!localStorageData) {
       alert('No tree data in localStorage');
       return;
@@ -19,6 +47,7 @@ export default React.createClass({
     return (
       <button
         onClick={this.onLoadClick}
+        disabled={!this.hasSavedData()}
       >
         Load
       </button>
