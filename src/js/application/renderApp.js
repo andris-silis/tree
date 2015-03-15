@@ -2,6 +2,7 @@ import React from 'react';
 
 import ApplicationLayoutView from './ApplicationLayoutView.jsx';
 import TreeView from '../tree/TreeView.jsx';
+import TreeToolbarView from '../tree/TreeToolbarView.jsx';
 
 
 export default function (state) {
@@ -9,6 +10,9 @@ export default function (state) {
 
   React.render(
     <ApplicationLayoutView>
+      <TreeToolbarView
+        tree={rootNodeCursor}
+      />
       <TreeView
         tree={rootNodeCursor}
       />
