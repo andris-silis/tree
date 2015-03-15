@@ -1,4 +1,5 @@
 import React from 'react';
+import { Paper } from 'material-ui';
 
 import ShouldComponentUpdateMixin from '../mixins/ShouldComponentUpdateMixin';
 
@@ -9,11 +10,13 @@ export default React.createClass({
 
   render() {
     return (
-      <ul className='tree'>
-        <TreeNodeView
-          node={this.props.tree}
-        />
-      </ul>
+      <Paper zDepth={1}>
+        <ul className='tree'>
+          <TreeNodeView
+            node={this.props.tree}
+          />
+        </ul>
+      </Paper>
     );
   }
 });

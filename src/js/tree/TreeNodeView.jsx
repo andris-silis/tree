@@ -1,4 +1,5 @@
 import React from 'react';
+import { RaisedButton, IconButton } from 'material-ui';
 
 import ShouldComponentUpdateMixin from '../mixins/ShouldComponentUpdateMixin';
 
@@ -46,18 +47,24 @@ var TreeNodeView = React.createClass({
     }
 
     return (
-      <button onClick={this.onDeleteClick}>
-        Delete
-      </button>
+      <IconButton
+        tooltip='Delete'
+        onClick={this.onDeleteClick}
+      >
+        <img src='icons/ic_delete_24px.svg' />
+      </IconButton>
     );
   },
 
 
   renderAddChildButton() {
     return (
-      <button onClick={this.onAddChildClick}>
-        Add child
-      </button>
+      <IconButton
+        tooltip='Add child'
+        onClick={this.onAddChildClick}
+      >
+        <img src='icons/ic_add_24px.svg' />
+      </IconButton>
     );
   },
 
@@ -68,9 +75,12 @@ var TreeNodeView = React.createClass({
     }
 
     return (
-      <button onClick={this.onEditClick}>
-        Edit
-      </button>
+      <IconButton
+        tooltip='Edit'
+        onClick={this.onEditClick}
+      >
+        <img src='icons/ic_edit_24px.svg' />
+      </IconButton>
     );
   },
 
