@@ -12,7 +12,12 @@ export default function() {
       vendors: [
         'react',
         'lodash',
-        'underscore'
+        'underscore',
+        'material-ui',
+        'immutable',
+        'immstruct',
+        'omniscient',
+        'classnames'
       ]
     },
     output: {
