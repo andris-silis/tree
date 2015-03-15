@@ -7,7 +7,7 @@ import TreeSaveView from './TreeSaveView.jsx';
 export default React.createClass({
   render() {
     return (
-      <div>
+      <div className='button-group'>
         <TreeLoadView
           tree={this.props.tree}
         />

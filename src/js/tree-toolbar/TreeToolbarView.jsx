@@ -11,6 +11,9 @@ export default React.createClass({
         <TreeLoadSaveView
           tree={this.props.tree}
         />
+
+        <div className='separator'></div>
+
         <TreeUndoRedoView
           appState={this.props.appState}
         />

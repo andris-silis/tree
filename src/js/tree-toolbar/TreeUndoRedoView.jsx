@@ -6,7 +6,7 @@ import TreeRedoView from './TreeRedoView.jsx';
 export default React.createClass({
   render() {
     return (
-      <div>
+      <div className='button-group'>
         <TreeUndoView
           appState={this.props.appState}
         />

@@ -1,9 +1,31 @@
 
-.toolbar > div {
-  display: inline-block;
-  margin-right: 10px;
+
+.toolbar {
+  background-color: #e1e1e1;
+  height: 56px;
+  padding: 0 24px;
 }
 
-.toolbar button {
-  margin-right: 4px;
+.toolbar > div {
+  display: inline-block;
 }
+
+.toolbar .button-group button {
+  margin-left: 12px;
+}
+
+.toolbar .button-group button:first-of-type {
+  margin-left: 0;
+}
+
+.separator {
+  background-color: rgba(0, 0, 0, 0.175);
+  display: inline-block;
+  height: 32px;
+  margin-left: 24px;
+  margin-right: 24px;
+  position: relative;
+  top: 12px;
+  width: 1px;
+}
+
