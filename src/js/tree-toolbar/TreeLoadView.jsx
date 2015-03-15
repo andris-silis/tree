@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import { fromJS as immutableFromJS } from 'immutable';
 
 
@@ -40,6 +41,10 @@ export default React.createClass({
 
     var treeDataObject = JSON.parse(localStorageData);
     this.props.tree.set('children', immutableFromJS(treeDataObject));
+
+    if (_.isFunction(this.props.onLoad)) {
+      this.props.onLoad();
+    }
   },
 
 

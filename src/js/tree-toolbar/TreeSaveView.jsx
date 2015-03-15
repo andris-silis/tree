@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default React.createClass({
 
   onSaveClick() {
@@ -15,6 +16,7 @@ export default React.createClass({
     return (
       <button
         onClick={this.onSaveClick}
+        disabled={this.props.disabled}
       >
         Save
       </button>

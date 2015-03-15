@@ -3,8 +3,8 @@ import React from 'react';
 import TreeLoadView from './TreeLoadView.jsx';
 import TreeSaveView from './TreeSaveView.jsx';
 
-export default React.createClass({
 
+export default React.createClass({
   render() {
     return (
       <div>
