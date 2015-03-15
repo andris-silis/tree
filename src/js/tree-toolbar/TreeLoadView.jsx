@@ -3,8 +3,12 @@ import { RaisedButton } from 'material-ui';
 import _ from 'lodash';
 import { fromJS as immutableFromJS } from 'immutable';
 
+import ShouldComponentUpdateMixin from '../mixins/ShouldComponentUpdateMixin';
+
 
 export default React.createClass({
+  mixins: [ShouldComponentUpdateMixin],
+
   getInitialState() {
     return {
       hasDataToLoad: false
