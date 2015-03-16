@@ -1,6 +1,6 @@
 import { fromJS as immutableFromJS } from 'immutable';
 
-const LOCALSTORAGE_KEY = 'treeDataPlain';
+const LOCALSTORAGE_KEY = 'treeDataRecursive';
 
 
 var saveTreeData = function (tree) {
@@ -14,15 +14,7 @@ var saveTreeData = function (tree) {
 
 var loadTreeData = function () {
   var localStorageData = localStorage.getItem(LOCALSTORAGE_KEY);
-
-  if (!localStorageData) {
-    return;
-  }
-
   var treeDataObject = JSON.parse(localStorageData);
-  if (!treeDataObject) {
-    return;
-  }
 
   return immutableFromJS(treeDataObject);
 };

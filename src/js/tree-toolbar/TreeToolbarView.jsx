@@ -2,10 +2,9 @@ import React from 'react';
 
 import { Toolbar, ToolbarGroup } from 'material-ui';
 
-import TreeLoadView from './TreeLoadView.jsx';
-import TreeSaveView from './TreeSaveView.jsx';
 import TreeUndoView from './TreeUndoView.jsx';
 import TreeRedoView from './TreeRedoView.jsx';
+import TreeLoadSaveView from './TreeLoadSaveView.jsx';
 
 
 export default React.createClass({
@@ -14,10 +13,8 @@ export default React.createClass({
     return (
       <Toolbar className='toolbar'>
         <ToolbarGroup>
-          <TreeLoadView
-            tree={this.props.tree}
-          />
-          <TreeSaveView
+
+          <TreeLoadSaveView
             tree={this.props.tree}
           />
 

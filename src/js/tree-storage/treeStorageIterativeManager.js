@@ -1,6 +1,6 @@
 import { fromJS as immutableFromJS } from 'immutable';
 
-const LOCALSTORAGE_KEY = 'treeDataPlain';
+const LOCALSTORAGE_KEY = 'treeDataIterative';
 
 
 var saveTreeData = function (tree) {

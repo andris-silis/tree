@@ -4,8 +4,6 @@ import _ from 'lodash';
 
 import ShouldComponentUpdateMixin from '../mixins/ShouldComponentUpdateMixin';
 
-import treeStoragePlainManager from '../tree-storage/treeStoragePlainManager';
-
 
 export default React.createClass({
   mixins: [ShouldComponentUpdateMixin],
@@ -18,7 +16,7 @@ export default React.createClass({
 
 
   componentWillMount() {
-    if (!treeStoragePlainManager.hasTreeData()) {
+    if (!this.props.storageManager.hasTreeData()) {
       return;
     }
 
@@ -29,7 +27,7 @@ export default React.createClass({
 
 
   onLoadClick() {
-    var treeData = treeStoragePlainManager.loadTreeData();
+    var treeData = this.props.storageManager.loadTreeData();
     if (!treeData) {
       alert('No tree data in localStorage');
       return;
@@ -48,7 +46,7 @@ export default React.createClass({
       <RaisedButton
         label='Load'
         onClick={this.onLoadClick}
-        disabled={!treeStoragePlainManager.hasTreeData()}
+        disabled={!this.props.storageManager.hasTreeData()}
       />
     );
   }
