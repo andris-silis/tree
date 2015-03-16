@@ -40,7 +40,13 @@ describe('Tree Manager', () => {
       treeData = newTree;
     });
 
-    addChildNode(treeCursor, { text: 'child-3' });
+    addChildNode(
+      treeCursor,
+      {
+        id: 'child-3',
+        text: 'child-3'
+      }
+    );
 
     expect(
       treeData.equals(treeAfterChildAdd)
