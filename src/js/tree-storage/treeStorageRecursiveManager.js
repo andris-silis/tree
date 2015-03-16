@@ -3,30 +3,32 @@ import _ from 'lodash';
 
 const LOCALSTORAGE_KEY_PREFIX = 'treeDataRecursive';
 
-
-var _getStorageKey = function (id) {
-  return `${LOCALSTORAGE_KEY_PREFIX}_${id}`;
-};
+import { getStorageKey, clearStorage } from './treeStorageManagerHelpers';
 
 
 var _saveNode = function (data) {
   // Save only IDs of children
   if (data.children && !_.isEmpty(data.children)) {
+    // Save each children
     data.children.forEach(node => _saveNode(node));
+    // Replace children with their IDs
     data.children = data.children.map(node => node.id);
   } else {
     data.children = [];
   }
 
   localStorage.setItem(
-    _getStorageKey(data.id),
+    getStorageKey(LOCALSTORAGE_KEY_PREFIX, data.id),
     JSON.stringify(data)
   );
 };
 
 
 var _loadNode = function (id) {
-  var localStorageData = localStorage.getItem(_getStorageKey(id));
+  var localStorageData = localStorage.getItem(
+    getStorageKey(LOCALSTORAGE_KEY_PREFIX, id)
+  );
+
   if (!localStorageData) {
     return;
   }
@@ -40,23 +42,8 @@ var _loadNode = function (id) {
 };
 
 
-var _clearStorage = function () {
-  _getAllKeys().forEach(key => {
-    localStorage.removeItem(key);
-  });
-};
-
-
-var _getAllKeys = function () {
-  return _.chain(localStorage)
-    .keys()
-    .filter(key => _.startsWith(key, `${LOCALSTORAGE_KEY_PREFIX}_`))
-    .value();
-};
-
-
 var saveTreeData = function (tree) {
-  _clearStorage();
+  clearStorage(LOCALSTORAGE_KEY_PREFIX);
   _saveNode(tree.toJSON())
 };
 
