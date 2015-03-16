@@ -16,13 +16,19 @@ export default React.createClass({
 
 
   componentWillMount() {
-    if (!this.props.storageManager.hasTreeData()) {
-      return;
-    }
+    this.updateDataLoadExistenceState(this.props.storageManager);
+  },
 
+
+  componentWillReceiveProps(nextProps) {
+    this.updateDataLoadExistenceState(nextProps.storageManager);
+  },
+
+
+  updateDataLoadExistenceState(storageManager) {
     this.setState({
-      hasDataToLoad: true
-    })
+      hasDataToLoad: storageManager.hasTreeData()
+    });
   },
 
 

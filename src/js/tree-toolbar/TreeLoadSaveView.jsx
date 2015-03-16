@@ -17,6 +17,12 @@ export default React.createClass({
   },
 
 
+  onSave() {
+    // To re-render load button
+    this.forceUpdate();
+  },
+
+
   onStorageChoiceChange(e, selectedIndex, menuItem) {
     var choices = {
       plain: treeStoragePlainManager,
@@ -62,6 +68,7 @@ export default React.createClass({
         <TreeSaveView
           tree={this.props.tree}
           storageManager={this.state.storageManager}
+          onSave={this.onSave}
         />
       </span>
     );

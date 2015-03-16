@@ -1,5 +1,7 @@
 import React from 'react';
+import _ from 'lodash';
 import { RaisedButton } from 'material-ui';
+
 
 export default React.createClass({
 
@@ -8,6 +10,10 @@ export default React.createClass({
     this.props.storageManager.saveTreeData(
       this.props.tree.get('children')
     );
+
+    if (_.isFunction(this.props.onSave)) {
+      this.props.onSave();
+    }
   },
 
 
