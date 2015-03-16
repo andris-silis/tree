@@ -5,13 +5,14 @@
  Change into repository root directory
 
 
- `npm install`
-
- `npm run-script build`
+ `npm install && npm run-script build`
 
 
 ## Run:
   Open `www/index.html` in browser
+
+## Run tests:
+  `npm test`
 
 
 ## Development:
