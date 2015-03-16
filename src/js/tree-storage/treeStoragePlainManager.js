@@ -38,6 +38,7 @@ var hasTreeData = function () {
 
 
 export default {
+  LOCALSTORAGE_KEY: LOCALSTORAGE_KEY,
   saveTreeData: saveTreeData,
   loadTreeData: loadTreeData,
   hasTreeData: hasTreeData

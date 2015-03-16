@@ -16,8 +16,7 @@ describe('Tree Plain Storage Manager', () => {
 
     treeStoragePlainManager.saveTreeData(tree);
 
-    var key = _.keys(mockedStore)[0];
-    var savedValue = mockedStore[key];
+    var savedValue = mockedStore[treeStoragePlainManager.LOCALSTORAGE_KEY];
 
     expect(treeJSONString).toEqual(savedValue);
   });
