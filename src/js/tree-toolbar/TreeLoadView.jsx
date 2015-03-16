@@ -1,9 +1,10 @@
 import React from 'react';
 import { RaisedButton } from 'material-ui';
 import _ from 'lodash';
-import { fromJS as immutableFromJS } from 'immutable';
 
 import ShouldComponentUpdateMixin from '../mixins/ShouldComponentUpdateMixin';
+
+import treeStoragePlainManager from '../tree-storage/treeStoragePlainManager';
 
 
 export default React.createClass({
@@ -17,7 +18,7 @@ export default React.createClass({
 
 
   componentWillMount() {
-    if (!this.hasSavedData()) {
+    if (!treeStoragePlainManager.hasTreeData()) {
       return;
     }
 
@@ -27,25 +28,14 @@ export default React.createClass({
   },
 
 
-  hasSavedData() {
-    return !!this.loadSavedData();
-  },
-
-
-  loadSavedData() {
-    return localStorage.getItem('treeData');
-  },
-
-
   onLoadClick() {
-    var localStorageData = this.loadSavedData();
-    if (!localStorageData) {
+    var treeData = treeStoragePlainManager.loadTreeData();
+    if (!treeData) {
       alert('No tree data in localStorage');
       return;
     }
 
-    var treeDataObject = JSON.parse(localStorageData);
-    this.props.tree.set('children', immutableFromJS(treeDataObject));
+    this.props.tree.set('children', treeData);
 
     if (_.isFunction(this.props.onLoad)) {
       this.props.onLoad();
@@ -58,7 +48,7 @@ export default React.createClass({
       <RaisedButton
         label='Load'
         onClick={this.onLoadClick}
-        disabled={!this.hasSavedData()}
+        disabled={!treeStoragePlainManager.hasTreeData()}
       />
     );
   }

@@ -1,25 +1,31 @@
 import React from 'react';
 import { RaisedButton } from 'material-ui';
 
+import treeStoragePlainManager from '../tree-storage/treeStoragePlainManager';
+
 
 export default React.createClass({
 
   onSaveClick() {
     // Save data starting from root node
-    localStorage.setItem(
-      'treeData',
-      JSON.stringify(this.props.tree.get('children'))
-    );
+    treeStoragePlainManager.saveTreeData(this.props.tree.get('children'));
   },
 
 
   render() {
     return (
-      <RaisedButton
-        label='Save'
-        onClick={this.onSaveClick}
-        disabled={this.props.disabled}
-      />
+      <span>
+        <RaisedButton
+          label='Save '
+          onClick={this.onSaveClick}
+          disabled={this.props.disabled}
+        />
+        <RaisedButton
+          label='Save'
+          onClick={this.onSaveClick}
+          disabled={this.props.disabled}
+        />
+      </span>
     );
   }
 });
