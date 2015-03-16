@@ -5,9 +5,13 @@ const LOCALSTORAGE_KEY = 'treeDataPlain';
 
 var saveTreeData = function (tree) {
   // No exception handling, sorry :)
+
+  // Save data starting from root node
+  var treeData = tree.get('children');
+
   localStorage.setItem(
     LOCALSTORAGE_KEY,
-    JSON.stringify(tree)
+    JSON.stringify(treeData)
   );
 };
 

@@ -6,9 +6,8 @@ import { RaisedButton } from 'material-ui';
 export default React.createClass({
 
   onSaveClick() {
-    // Save data starting from root node
     this.props.storageManager.saveTreeData(
-      this.props.tree.get('children')
+      this.props.tree
     );
 
     if (_.isFunction(this.props.onSave)) {
