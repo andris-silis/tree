@@ -18,10 +18,7 @@ var TreeNodeView = React.createClass({
   onAddChildClick() {
     addChildNode(
       this.props.node,
-      {
-        id: Math.random().toString(36).substring(7),
-        text: 'New child'
-      }
+      { text: 'New child' }
     );
   },
 

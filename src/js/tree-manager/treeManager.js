@@ -15,6 +15,8 @@ export default {
 
 
   addChildNode(parentNodeCursor, data) {
+    data.id = data.id || Math.random().toString(36).substring(7);
+
     parentNodeCursor.get('children').update(children => {
       return children.push(
         new TreeNodeRecord(data)
