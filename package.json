@@ -62,7 +62,6 @@
     "material-ui": "https://github.com/andris-silis/material-ui/archive/v0.7.1-react013.tar.gz",
     "omniscient": "git+https://github.com/andris-silis/omniscient.git",
     "react": "^0.13.0",
-    "react-tap-event-plugin": "git+https://github.com/andris-silis/react-tap-event-plugin.git",
     "react-tools": "^0.13.0"
   }
 }
