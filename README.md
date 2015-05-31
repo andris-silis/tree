@@ -7,7 +7,7 @@ Test assignment
  Change into repository root directory
 
 
- `npm install && npm run-script build`
+ `npm install && npm run build`
 
 
 ## Run:
@@ -28,10 +28,10 @@ JS code is built using Webpack as CommonJS builder and Gulp as a command runner.
 
 
 ### For development - starts a LiveReload server and rebuilds files on change:
-  `npm run-script build && npm run-script watch`
+  `npm run build && npm run watch`
 
 ### Production build - minifies the end result:
-  `npm run-script build-prod`
+  `npm run build-prod`
 
   Built CSS and JS is placed in `www/compiled` directory.
 
