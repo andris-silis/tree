@@ -1,17 +1,20 @@
 import renderApp from './renderApp';
 import initAppState from './initAppState';
+import _ from 'lodash';
 
 
 var bootstrap = () => {
   var state = initAppState();
 
-  // Re-render app when data state changes
-  state.on('swap', () => {
-    renderApp(state);
-  });
+  var renderWithCurrentState = _.partial(renderApp, state);
 
-  renderApp(state);
+  var renderWithCurrentStateOnNextRAF = function () {
+    window.requestAnimationFrame(renderWithCurrentState);
+  };
+
+  renderWithCurrentStateOnNextRAF();
+
+  state.on('swap', renderWithCurrentStateOnNextRAF);
 };
-
 
 document.addEventListener('DOMContentLoaded', bootstrap, false);
